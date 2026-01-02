@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Summit's Edge - Film Pitch Deck</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a237e;
+            --dark-blue: #0d1433;
+            --medium-blue: #283593;
+            --light-blue: #e8eaf6;
+            --accent-red: #d32f2f;
+            --dark-red: #b71c1c;
+            --white: #ffffff;
+            --off-white: #f5f7ff;
+            --light-gray: #e0e0e0;
+            --medium-gray: #757575;
+            --dark-gray: #333333;
+            --black: #121212;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--off-white);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(13, 20, 51, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.7rem 2rem;
+            background-color: rgba(13, 20, 51, 0.98);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .logo-text {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--accent-red);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-red);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 80px 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            scroll-margin-top: 80px;
+        }
+        
+        /* Title Section */
+        .title-section {
+            background: linear-gradient(rgba(13, 20, 51, 0.85), rgba(26, 35, 126, 0.9)), 
+                        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding-top: 120px;
+        }
+        
+        .title-section h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .title-section .subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .title-tagline {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 2rem auto;
+            line-height: 1.8;
+            color: var(--light-gray);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            background-color: var(--white);
+            border-left: 6px solid var(--accent-red);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--accent-red);
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--medium-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+        
+        .logline {
+            font-size: 1.5rem;
+            font-style: italic;
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 6px solid var(--accent-red);
+            margin: 2rem 0;
+            line-height: 1.8;
+            color: var(--dark-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .highlight-box {
+            background: #ffeaea;
+            border-left: 6px solid var(--dark-red);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .highlight-box h4 {
+            color: var(--dark-red);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Layouts */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .info-card {
+            background: var(--off-white);
+            padding: 1.8rem;
+            border-radius: 8px;
+            border: 2px solid var(--light-blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: var(--medium-blue);
+        }
+        
+        .info-card h4 {
+            color: var(--accent-red);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        th {
+            background: var(--primary-blue);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--off-white);
+        }
+        
+        tr:hover {
+            background-color: var(--light-blue);
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            min-width: 200px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--accent-red);
+        }
+        
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Images */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--medium-blue) 100%);
+            height: 250px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-placeholder::before {
+            content: '📷';
+            font-size: 3.5rem;
+            position: absolute;
+            opacity: 0.2;
+        }
+        
+        .image-caption {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 0.8rem;
+            font-size: 0.95rem;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+        
+        /* Tagline */
+        .tagline {
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin: 3rem 0;
+            font-style: italic;
+            line-height: 1.4;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Budget */
+        .budget-breakdown {
+            background: var(--off-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid var(--light-blue);
+        }
+        
+        /* Contact */
+        .contact-info {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            color: var(--light-gray);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info strong {
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            color: var(--light-gray);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-red);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .three-column {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-blue);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .title-section h1 {
+                font-size: 3.5rem;
+            }
+            
+            .title-section .subtitle {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 2.4rem;
+            }
+            
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 70px 25px 50px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .title-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .title-section .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .logline {
+                font-size: 1.3rem;
+                padding: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.8rem;
+            }
+            
+            .stat-box {
+                min-width: 150px;
+                padding: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-mountain" style="color: var(--accent-red); font-size: 1.8rem;"></i>
+            <div class="logo-text">THE <span>SUMMIT'S</span> EDGE</div>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#title">Home</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#characters">Characters</a></li>
+            <li><a href="#visuals">Visuals</a></li>
+            <li><a href="#budget">Budget</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Back to top button -->
+    <a href="#title" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <!-- Title Section -->
+    <section id="title" class="section title-section">
+        <h1>THE SUMMIT'S EDGE</h1>
+        <div class="subtitle">A Survival Drama</div>
+        <div class="title-tagline">
+            A guilt-ridden photojournalist attempts to summit Kanchenjunga as penance, but when stranded in the Himalayas, his fight for survival becomes a journey toward self-forgiveness.
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <div style="background: rgba(211, 47, 47, 0.2); padding: 0.8rem 1.5rem; border-radius: 30px; border: 1px solid var(--accent-red);">
+                <i class="fas fa-film"></i> Survival Drama
+            </div>
+            <div style="background: rgba(26, 35, 126, 0.2); padding: 0.8rem 1.5rem; border-radius: 30px; border: 1px solid var(--primary-blue);">
+                <i class="fas fa-mountain"></i> Psychological Thriller
+            </div>
+            <div style="background: rgba(40, 53, 147, 0.2); padding: 0.8rem 1.5rem; border-radius: 30px; border: 1px solid var(--medium-blue);">
+                <i class="fas fa-heart"></i> Spiritual Journey
+            </div>
+        </div>
+        <a href="#logline" style="margin-top: 3rem; padding: 1rem 2.5rem; background-color: var(--accent-red); color: white; text-decoration: none; border-radius: 4px; font-weight: 600; letter-spacing: 1px; transition: all 0.3s; display: inline-block; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+            Explore the Pitch <i class="fas fa-arrow-down" style="margin-left: 0.5rem;"></i>
+        </a>
+    </section>
+    
+    <!-- Logline Section -->
+    <section id="logline" class="section content-section">
+        <h2>Logline</h2>
+        <div class="logline">
+            A guilt-ridden photojournalist attempts to summit Kanchenjunga as penance for his brother's death, but when he becomes stranded and left for dead in the Himalayas, his fight for survival becomes a journey toward self-forgiveness—leading him to a hidden monastery where his father's disappeared climbing partner holds the key to his redemption.
+        </div>
+        
+        <div class="two-column">
+            <div class="info-card">
+                <h4>Genre</h4>
+                <p><strong>Primary:</strong> Survival Drama / Psychological Thriller</p>
+                <p><strong>Sub-Genre:</strong> Action Adventure, Spiritual Journey</p>
+                <div style="margin-top: 1rem; color: var(--medium-blue);">
+                    <i class="fas fa-tags"></i> Visceral like <em>127 Hours</em><br>
+                    <i class="fas fa-expand-alt"></i> Epic like <em>The Revenant</em><br>
+                    <i class="fas fa-mountain"></i> Contemplative like <em>Into the Wild</em>
+                </div>
+            </div>
+            <div class="info-card">
+                <h4>Market Position</h4>
+                <p>Premium survival drama positioned between <em>127 Hours</em> (intimate, psychological) and <em>The Revenant</em> (epic, transformative) with the spiritual depth of <em>Into the Wild</em>.</p>
+                <div style="margin-top: 1rem; color: var(--accent-red); font-weight: 600;">
+                    <i class="fas fa-award"></i> Festival & Awards Potential<br>
+                    <i class="fas fa-globe"></i> International Appeal<br>
+                    <i class="fas fa-users"></i> Universal Themes
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why This Film Section -->
+    <section id="why" class="section content-section">
+        <h2>Why This Film? Why Now?</h2>
+        
+        <div class="highlight-box">
+            <h3>Market Proven Genre with Strong ROI</h3>
+            <p>Survival films have consistent international appeal with strong box office performance and critical acclaim.</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">$533M</div>
+                <div class="stat-label">The Revenant</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$203M</div>
+                <div class="stat-label">Everest</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$60M</div>
+                <div class="stat-label">127 Hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Oscar Noms</div>
+            </div>
+        </div>
+        
+        <h3>Unique Selling Points</h3>
+        <div class="two-column">
+            <div>
+                <ul>
+                    <li><strong>Double Twist Ending:</strong> Monastery reveal + father's partner connection</li>
+                    <li><strong>Authentic Setting:</strong> Northeast India's unexplored Himalayan region</li>
+                    <li><strong>Timely Themes:</strong> Mental health, male vulnerability, self-forgiveness</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li><strong>Festival Ready:</strong> Awards-worthy performances and cinematography</li>
+                    <li><strong>Cultural Bridge:</strong> Buddhist philosophy meets visceral survival</li>
+                    <li><strong>Social Impact:</strong> Mental health awareness and mountaineering safety</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Section -->
+    <section id="story" class="section content-section">
+        <h2>The Story</h2>
+        
+        <div class="two-column">
+            <div>
+                <h3>Act One: The Weight of the Dead</h3>
+                <p>Arjun Mehta (32), a successful photojournalist, lives paralyzed by guilt. Five years ago, his brother Rohan died in a climbing accident—a trip Arjun skipped for work. Unable to commit to his girlfriend Meera or embrace life, Arjun decides to summit Kanchenjunga as suicidal penance.</p>
+                
+                <h3>Act Two: Descent Into Hell (6 Days)</h3>
+                <p>Near the summit, Arjun's leg becomes trapped in ice. Left behind to save the group, he frees himself but descends the wrong mountain face into the restricted Indo-Chinese buffer zone. What follows is brutal: crevasse falls, collapsing ice bridges, hypothermia, starvation, hallucinations.</p>
+            </div>
+            
+            <div>
+                <h3>Act Three: Rebirth</h3>
+                <p>Nearly dead, Arjun discovers a hidden monastery. The head Lama is Mahendra Singh—his father's disappeared climbing partner from 30 years ago. During six weeks of recovery, Lama Tenzin reveals he spoke to Rohan the day he died. Rohan's message: "Tell Arjun to stop punishing himself and live."</p>
+                
+                <div class="highlight-box">
+                    <h4>The Ending</h4>
+                    <p>One year later, Arjun returns—not to summit, but to volunteer at a memorial for missing climbers. He's married to Meera, expecting a child, missing three fingers. At the tree where he nearly died, he plants a prayer flag reading "LIVE." As the camera pulls back, another climber appears on the distant summit—the cycle continues, but Arjun has chosen life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Characters Section -->
+    <section id="characters" class="section content-section">
+        <h2>Characters</h2>
+        
+        <div class="info-card" style="margin-bottom: 1.5rem;">
+            <h4>ARJUN MEHTA (32) - Lead</h4>
+            <p><strong>Flaw:</strong> Guilt-driven self-destruction; documents life instead of living it</p>
+            <p><strong>Want:</strong> To complete his brother's summit as atonement</p>
+            <p><strong>Need:</strong> To forgive himself and choose life</p>
+            <p><strong>Arc:</strong> From passive guilt to active self-forgiveness; from death-wish to life-embrace</p>
+        </div>
+        
+        <div class="two-column">
+            <div class="info-card">
+                <h4>LAMA TENZIN (70s)</h4>
+                <p>Head monk and mentor</p>
+                <p><strong>Twist:</strong> He's Arjun's father's disappeared climbing partner (Mahendra Singh)</p>
+                <p>Provides spiritual guidance and final piece of healing</p>
+                <div style="margin-top: 1rem; color: var(--medium-blue); font-style: italic;">
+                    <i class="fas fa-user"></i> Casting: Naseeruddin Shah, Anupam Kher
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h4>MEERA KAPOOR (30)</h4>
+                <p>Arjun's girlfriend</p>
+                <p>Represents the life Arjun fears to embrace</p>
+                <p>Bookends the story: leaves broken, returns healed</p>
+                <div style="margin-top: 1rem; color: var(--medium-blue); font-style: italic;">
+                    <i class="fas fa-user"></i> Casting: Taapsee Pannu, Radhika Apte
+                </div>
+            </div>
+        </div>
+        
+        <div class="two-column">
+            <div class="info-card">
+                <h4>ROHAN MEHTA (27)</h4>
+                <p>Deceased brother (flashbacks/hallucinations)</p>
+                <p>His voicemail holds key to redemption</p>
+                <p>Appears in Arjun's hallucinations as both guide and accuser</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>VIKRAM & PEMBA</h4>
+                <p>Climbing companions who must leave Arjun behind</p>
+                <p>Carry survivor's guilt and moral conflict</p>
+                <p>Represent the harsh realities of high-altitude survival decisions</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Visuals Section -->
+    <section id="visuals" class="section content-section">
+        <h2>Key Visuals from the Film</h2>
+        
+        <div class="image-grid">
+            <div class="image-placeholder">
+                <div class="image-caption">Opening: Frozen memorial hand reaching from ice</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="image-caption">The Ice Trap: Arjun's leg wedged in crevasse</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="image-caption">Survival: Crossing collapsing frozen lake</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="image-caption">Hallucination: Rohan appears across the fire</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="image-caption">Discovery: Hidden monastery through mist</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="image-caption">Transformation: Lama Tenzin's photograph reveal</div>
+            </div>
+        </div>
+        
+        <h3>Visual & Cinematic Approach</h3>
+        <div class="three-column">
+            <div class="info-card">
+                <h4>Cinematography</h4>
+                <p>Handheld intimacy in vast landscapes</p>
+                <p>POV survival sequences</p>
+                <p>Distorted hallucinations</p>
+                <p>Contemplative monastery scenes</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>Color Palette</h4>
+                <p><strong>Survival:</strong> Harsh whites, steel blues, blood red</p>
+                <p><strong>Monastery:</strong> Warm ochres, maroon, gold</p>
+                <p><strong>Finale:</strong> Earth tones, green of rebirth</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>Sound Design</h4>
+                <p>Hyperreal: every breath, heartbeat, ice crack</p>
+                <p>Silence as terror</p>
+                <p>Buddhist chants</p>
+                <p>Minimal score</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparable Films Section -->
+    <section class="section content-section">
+        <h2>Comparable Films & Market Analysis</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Film</th>
+                    <th>Budget</th>
+                    <th>Box Office</th>
+                    <th>Festival/Awards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>127 Hours</strong> (2010)</td>
+                    <td>$18M</td>
+                    <td>$60M</td>
+                    <td>6 Oscar nominations</td>
+                </tr>
+                <tr>
+                    <td><strong>The Revenant</strong> (2015)</td>
+                    <td>$135M</td>
+                    <td>$533M</td>
+                    <td>3 Oscar wins</td>
+                </tr>
+                <tr>
+                    <td><strong>Everest</strong> (2015)</td>
+                    <td>$55M</td>
+                    <td>$203M</td>
+                    <td>Technical acclaim</td>
+                </tr>
+                <tr>
+                    <td><strong>Into the Wild</strong> (2007)</td>
+                    <td>$15M</td>
+                    <td>$56M</td>
+                    <td>Festival favorite</td>
+                </tr>
+                <tr>
+                    <td><strong>All Is Lost</strong> (2013)</td>
+                    <td>$9M</td>
+                    <td>$13M</td>
+                    <td>Oscar nom, critical darling</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Target Audience</h3>
+        <div class="two-column">
+            <div>
+                <ul>
+                    <li><strong>Primary:</strong> Adults 25-54, prestige film enthusiasts</li>
+                    <li><strong>Secondary:</strong> International audiences (Himalayan appeal, universal themes)</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li><strong>Festival Circuit:</strong> Awards voters, critics</li>
+                    <li><strong>Streaming:</strong> High-value content seekers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Budget Section -->
+    <section id="budget" class="section content-section">
+        <h2>Production Overview</h2>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">$10M</div>
+                <div class="stat-label">Target Budget</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">50</div>
+                <div class="stat-label">Shooting Days</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12-14</div>
+                <div class="stat-label">Months to Release</div>
+            </div>
+        </div>
+        
+        <div class="budget-breakdown">
+            <h3>Budget Breakdown ($10M)</h3>
+            <table>
+                <tr>
+                    <td>Above-the-line (Cast, Director, Producer)</td>
+                    <td>$2.5M (25%)</td>
+                </tr>
+                <tr>
+                    <td>Production (Locations, Crew, Equipment)</td>
+                    <td>$3.5M (35%)</td>
+                </tr>
+                <tr>
+                    <td>Post-Production (Editing, VFX, Sound, Color)</td>
+                    <td>$2M (20%)</td>
+                </tr>
+                <tr>
+                    <td>Visual Effects (Limited but crucial)</td>
+                    <td>$1M (10%)</td>
+                </tr>
+                <tr>
+                    <td>Contingency (10%)</td>
+                    <td>$1M (10%)</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="two-column">
+            <div class="info-card">
+                <h4>Key Locations</h4>
+                <ul>
+                    <li>Sikkim, Northeast India (mountain sequences)</li>
+                    <li>Authentic Buddhist monastery</li>
+                    <li>High-altitude base camps</li>
+                    <li>Delhi (urban sequences)</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>Shooting Schedule</h4>
+                <ul>
+                    <li>Mountain sequences: 20-25 days</li>
+                    <li>Monastery: 10-12 days</li>
+                    <li>Base camp/Delhi: 8-10 days</li>
+                    <li>Studio/Interior: 5-7 days</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Financing Section -->
+    <section class="section content-section">
+        <h2>Financing & Revenue Strategy</h2>
+        
+        <h3>Financing Model ($10M)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Amount</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Indian Film Studios/Production Houses</td>
+                    <td>$4-5M</td>
+                    <td>45%</td>
+                </tr>
+                <tr>
+                    <td>International Co-Production (Europe/Canada/UK)</td>
+                    <td>$2-3M</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>Pre-Sales/Distribution Advances</td>
+                    <td>$1.5-2M</td>
+                    <td>17%</td>
+                </tr>
+                <tr>
+                    <td>Tax Incentives (India/Co-production)</td>
+                    <td>$1M</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>Private Equity/Film Funds</td>
+                    <td>$500K</td>
+                    <td>3%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Revenue Streams</h3>
+        <div class="three-column">
+            <div class="info-card">
+                <h4>Theatrical</h4>
+                <p><strong>India:</strong> ₹15-25 crores</p>
+                <p><strong>International:</strong> Festival-to-theatrical</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>Streaming (Primary)</h4>
+                <p><strong>Platform Deal:</strong> $3-5M</p>
+                <p>Netflix/Amazon Original potential</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>International Sales</h4>
+                <p><strong>Territory Sales:</strong> $2-3M</p>
+                <p>Strong European/Asian appeal</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Festival Strategy -->
+    <section class="section content-section">
+        <h2>Awards & Festival Potential</h2>
+        
+        <div class="two-column">
+            <div class="info-card">
+                <h4>Festival Strategy</h4>
+                <ul>
+                    <li><strong>Premiere:</strong> Sundance, Toronto, or Venice</li>
+                    <li><strong>Secondary:</strong> Busan, Mumbai Film Festival, BFI London</li>
+                    <li><strong>Awards Season:</strong> Independent Spirit Awards, National Film Awards (India)</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>Award Categories</h4>
+                <ul>
+                    <li>Lead Actor (transformation)</li>
+                    <li>Cinematography</li>
+                    <li>Sound Design</li>
+                    <li>Film Editing</li>
+                    <li>Original Screenplay</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>Distribution Partners (Target)</h3>
+            <p><strong>India:</strong> PVR Pictures, Zee Studios, or direct platform</p>
+            <p><strong>International:</strong> A24, Bleecker Street, or festival-driven distributor</p>
+            <p><strong>Streaming:</strong> Netflix, Amazon Prime Video (preferred)</p>
+        </div>
+    </section>
+    
+    <!-- Marketing Section -->
+    <section class="section content-section">
+        <h2>Marketing & Social Impact</h2>
+        
+        <div class="tagline">
+            "Some summits are meant to be surrendered"
+        </div>
+        
+        <h3>Campaign Pillars</h3>
+        <div class="three-column">
+            <div class="info-card">
+                <h4>Authenticity</h4>
+                <p>Real locations, real challenges, real transformation</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>Mystery</h4>
+                <p>"What happened on the mountain?" teaser campaign</p>
+            </div>
+            
+            <div class="info-card">
+                <h4>Universal</h4>
+                <p>"Everyone has their mountain" - personal connection</p>
+            </div>
+        </div>
+        
+        <h3>Social Impact Initiatives</h3>
+        <div class="two-column">
+            <div>
+                <ul>
+                    <li><strong>Mental Health:</strong> "It's Okay to Turn Back" campaign addressing male suicide and depression</li>
+                    <li><strong>Mountaineering Safety:</strong> Partnership with climbing organizations, honoring missing climbers</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li><strong>Cultural Bridge:</strong> Showcasing Northeast India and Buddhist philosophy</li>
+                    <li><strong>Environmental Conservation:</strong> Himalayan preservation messaging</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Talent Section -->
+    <section class="section content-section">
+        <h2>Talent & Creative Team</h2>
+        
+        <h3>Lead Actor (Arjun) - Casting Considerations</h3>
+        <div class="info-card">
+            <p><strong>Profile:</strong> Male, 30-35, proven dramatic range, physical commitment</p>
+            <p><strong>Indian Market:</strong> Rajkummar Rao, Vicky Kaushal, Ayushmann Khurrana</p>
+            <p><strong>International Crossover:</strong> Dev Patel, Riz Ahmed</p>
+        </div>
+        
+        <h3>Key Creative Positions</h3>
+        <div class="two-column">
+            <div>
+                <ul>
+                    <li><strong>Director:</strong> Experience with intimate character studies and physical filmmaking (documentary background preferred)</li>
+                    <li><strong>Cinematographer:</strong> Natural light expertise, extreme conditions (Emmanuel Lubezki style)</li>
+                    <li><strong>Sound Designer:</strong> Critical for immersive survival experience</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li><strong>Editor:</strong> Rhythmic tension and emotional release</li>
+                    <li><strong>Composer:</strong> Minimalist, atmospheric (Jóhann Jóhannsson influence)</li>
+                    <li><strong>Production Designer:</strong> Authentic monastery and mountain environments</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Risks Section -->
+    <section class="section content-section">
+        <h2>Risks & Mitigation</h2>
+        
+        <div class="two-column">
+            <div>
+                <h3>Production Risks</h3>
+                <ul>
+                    <li><strong>Weather-dependent shooting:</strong> Extended windows, backup locations</li>
+                    <li><strong>High-altitude safety:</strong> Experienced crew, medical team, comprehensive insurance</li>
+                    <li><strong>Budget overruns:</strong> Detailed prep, 10% contingency, local crew utilization</li>
+                    <li><strong>Permit/border zone challenges:</strong> Early government engagement, local co-producers</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Market Risks</h3>
+                <ul>
+                    <li><strong>Niche genre appeal:</strong> Festival strategy builds prestige, platform deal reduces theatrical dependency</li>
+                    <li><strong>Dark subject matter:</strong> Marketing emphasizes transformation and hope over suffering</li>
+                    <li><strong>Unknown lead actor:</strong> Strong ensemble, director-driven marketing, "discovery" narrative</li>
+                    <li><strong>Regional specificity:</strong> Universal themes, English dialogue option, international co-production</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline -->
+    <section class="section content-section">
+        <h2>Production Timeline</h2>
+        
+        <div class="three-column">
+            <div class="info-card">
+                <h4>Pre-Production</h4>
+                <p><strong>4-6 Months</strong></p>
+                <ul>
+                    <li>Script finalization</li>
+                    <li>Casting & crew</li>
+                    <li>Location scouting</li>
+                    <li>Permits & prep</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>Production</h4>
+                <p><strong>3 Months</strong></p>
+                <ul>
+                    <li>Mountain sequences</li>
+                    <li>Monastery shoot</li>
+                    <li>Studio work</li>
+                    <li>Weather buffers</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>Post-Production</h4>
+                <p><strong>5-6 Months</strong></p>
+                <ul>
+                    <li>Editing</li>
+                    <li>VFX & sound design</li>
+                    <li>Color & final mix</li>
+                    <li>Festival prep</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="highlight-box" style="margin-top: 2rem;">
+            <h3>Key Milestones</h3>
+            <table>
+                <tr>
+                    <td><strong>Greenlight to Production Start:</strong></td>
+                    <td>6 months</td>
+                </tr>
+                <tr>
+                    <td><strong>Production Wrap to Festival Premiere:</strong></td>
+                    <td>6-8 months</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Timeline (Greenlight to Release):</strong></td>
+                    <td>12-14 months</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    
+    <!-- The Ask Section -->
+    <section class="section content-section">
+        <h2>The Ask</h2>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">$10M</div>
+                <div class="stat-label">Production Financing</div>
+            </div>
+        </div>
+        
+        <h3>What You Get in Return</h3>
+        <div class="two-column">
+            <div>
+                <ul>
+                    <li>✓ A prestige festival film with commercial viability</li>
+                    <li>✓ International co-production with authentic Indian setting</li>
+                    <li>✓ Awards-worthy performances and technical excellence</li>
+                    <li>✓ Platform-ready content with global appeal</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>✓ Social impact campaign with real-world relevance</li>
+                    <li>✓ Strong ROI potential based on comparable film performance</li>
+                    <li>✓ Timely themes of mental health and redemption</li>
+                    <li>✓ Unique double-twist narrative structure</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>Current Status</h3>
+            <div class="two-column">
+                <div>
+                    <p>✓ Completed screenplay with double-twist structure</p>
+                    <p>✓ Location scouts completed in Sikkim</p>
+                    <p>✓ Cultural consultants and monastery connections engaged</p>
+                </div>
+                <div>
+                    <p>✓ Preliminary budget and financing model prepared</p>
+                    <p>⊙ Director conversations ongoing</p>
+                    <p>⊙ Lead actor casting in progress</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Closing Section -->
+    <section class="section content-section">
+        <h2>Why THE SUMMIT'S EDGE Will Succeed</h2>
+        
+        <div class="two-column">
+            <div>
+                <h3>Creative Excellence</h3>
+                <ul>
+                    <li>Emotionally resonant survival story</li>
+                    <li>Complex, award-worthy lead role</li>
+                    <li>Double twist that redefines the narrative</li>
+                    <li>Stunning Himalayan cinematography</li>
+                    <li>Universal themes of guilt and redemption</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Commercial Viability</h3>
+                <ul>
+                    <li>Proven genre with strong track record</li>
+                    <li>Festival-to-platform distribution model</li>
+                    <li>International co-production appeal</li>
+                    <li>Multiple revenue streams</li>
+                    <li>Strong social impact marketing hooks</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="tagline" style="margin-top: 3rem;">
+            "The summit is not the destination.<br>The choice to live is."
+        </div>
+        
+        <p style="text-align: center; font-size: 1.3rem; margin-top: 2rem; font-style: italic; color: var(--primary-blue);">
+            This is more than a survival film—it's a meditation on what we owe the dead,<br>
+            what we owe ourselves, and the courage it takes to choose life at its most broken.
+        </p>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section content-section">
+        <h2>Let's Make This Film</h2>
+        
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>Producer:</strong> [Your Name]</p>
+            <p><strong>Email:</strong> [your.email@example.com]</p>
+            <p><strong>Phone:</strong> [+91 XXXXX XXXXX]</p>
+            <p><strong>Website:</strong> [www.yourproduction.com]</p>
+            <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
+                <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: var(--white); font-size: 1.5rem;"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1rem;">
+                Available for meetings, script reads, and detailed budget breakdowns
+            </p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light-blue); border-radius: 8px;">
+            <p style="font-size: 1.3rem; color: var(--primary-blue);">
+                <em>"Seven people disappear in the Himalayas every year.<br>
+                This film is for them—and for everyone still learning when to turn back."</em>
+            </p>
+        </div>
+        
+        <p style="text-align: center; margin-top: 2rem; font-size: 1rem; color: var(--medium-gray);">
+            Thank you for your time and consideration
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>THE SUMMIT'S EDGE &copy; 2023 Film Pitch Deck. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">This document is confidential and intended only for the recipient.</p>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                navbar.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add interactive stats animation
+        const statBoxes = document.querySelectorAll('.stat-box');
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Set initial state for animation
+        statBoxes.forEach(box => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateY(20px)';
+            box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(box);
+        });
+    </script>
+</body>
+</html>
